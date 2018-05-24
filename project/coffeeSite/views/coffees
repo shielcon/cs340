@@ -1,0 +1,42 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<h3>Add new coffee:</h3>
+<form id="addcoffees" action="/coffee" method="post">
+    Name: <input type="text" name="fname"><br>
+    Description: <input type="text" name="lname"><br>
+    Roaster: <select name="roaster"> 
+        {{#each roaster}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+    Roast: <select name="roast"> 
+        {{#each c_roast}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+ </form>
+<br/>
+<h3>Current Coffees:</h3>
+<table>
+    <thead> 
+        <th>Name</th> 
+        <th>Description</th> 
+        <th>Roaster</th>
+        <th>Roast</th>  
+    </thead> 
+    <tbody> 
+        {{#each `c_coffee`}} 
+        <tr> 
+            <td>{{name}}</td> 
+            <td>{{description}}</td> 
+            <td>{{roaster}}</td> 
+            <td>{{roast}}</td>
+            <td><button onclick="deleteCoffee({{id}})">Delete</button></td>
+            <td><a href="/coffees/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>
